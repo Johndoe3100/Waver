@@ -1,0 +1,3 @@
+## 2025-06-17 - [README Optimization & Tool Precision]
+**Learning:** `sed` can be imprecise when adding attributes to HTML tags in documentation, especially with self-closing tags (e.g., `/>`), where it might append after the closing slash. Also, plan reviews require complete file exploration; large files like `README.md` can be truncated in tool output, leading to "Exploration Rule" violations if not fully read.
+**Action:** Prefer `replace_with_git_merge_diff` for precise tag modifications in `README.md`. Always use `wc -c` or `grep` to ensure the entire scope of a file is understood before proposing modifications in a plan.
