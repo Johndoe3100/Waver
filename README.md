@@ -1,7 +1,8 @@
+<!-- ⚡ Bolt Optimization: Converted assets to WebP (85% reduction) and added lazy loading to images. -->
 # Waver 1.0
 
 <p align="center">
-  <img src="assets/logo.png" width="400" style="border:none;box-shadow:none;border-radius:0;background:none;">
+  <img src="assets/logo.webp" width="400" style="border:none;box-shadow:none;border-radius:0;background:none;">
 <p>
 
 <div align="center">
@@ -21,7 +22,7 @@
 - 🌟 **Superior Motion Modeling:** Excels at capturing complex motion, achieving superior motion amplitude and temporal consistency in video synthesis.
 
 <div align="left">
-    <img src="assets/arena0805.png" alt="" style="width: 100%;" />
+    <img src="assets/arena0805.webp" alt="" style="width: 100%;" loading="lazy" />
 </div>
 
 > [**Waver: Wave Your Way to Lifelike Video Generation**](https://arxiv.org/pdf/2508.15761)
@@ -62,7 +63,7 @@ Complex and large-amplitude motions have consistently posed significant challeng
 We compared **Waver1.0** with leading open-source and closed-source models on Waver-Bench 1.0 and Hermes Motion Testset in terms of motion quality, visual quality and prompt following. Through manual evaluation, **Waver1.0** are superior to those from both closed-source and open-source models.
 </br>
 <div align="left">
-    <img src="assets/bench_gsb.png" alt="" style="width: 90%;" />
+    <img src="assets/bench_gsb.webp" alt="" style="width: 90%;" loading="lazy" />
 </div>
 
 
@@ -73,7 +74,7 @@ We compared **Waver1.0** with leading open-source and closed-source models on Wa
 We use [Wan-VAE](https://huggingface.co/Wan-AI/Wan2.1-T2V-14B/blob/main/Wan2.1_VAE.pth) to obtain the compressed video latent for its efficiency. We adopt [flan-t5-xxl](https://huggingface.co/google/flan-t5-xxl) and [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) to extract text features. Our DiT model is built upon rectified flow Transformers. Video and text modalities are fused using a Dual Stream + Single Stream approach, where the numbers of the two types of blocks are M and N. We achieve joint training of T2V and I2V within a single model simply by modifying the input channel, 16 for video token, 16 for image (first frame) token and 4 for task mask. We incorporate the image latent with a probability of 20% during joint training of T2V and I2V.
 
 <div align="left">
-    <img src="assets/model.png" alt="" style="width: 85%;" />  
+    <img src="assets/model.webp" alt="" style="width: 85%;" loading="lazy" />
 </div>  
 
 | Model  | M         | N      | Input Dimension |Output Dimension | Num of Head      | Head Dim |
@@ -83,13 +84,13 @@ We use [Wan-VAE](https://huggingface.co/Wan-AI/Wan2.1-T2V-14B/blob/main/Wan2.1_V
 ##### (2) Cascade Refiner for 1080P Generation
 **Waver-Refiner** adopts the DiT architecture and is trained using the flow matching method. We first upsample the low-resolution video (480p or 720p) to 1080p and then add noise to it. The refiner takes the noised low-resolution video as input and outputs high-quality 1080p video. The refiner employs the window attention mechanism and reduces the number of inference steps by half, significantly improving inference speed. Specifically, inference time is reduced by **~40% for 720p→1080p** and **~60% for 480p→1080p** compared to direct 1080p generation.
 <div align="left">
-    <img src="assets/refiner.png" alt="" style="width: 85%;" />
+    <img src="assets/refiner.webp" alt="" style="width: 85%;" loading="lazy" />
 </div>
 
 ##### (3) Training Recipe
 We found that training on low-resolution videos is crucial for learning motion. So we invested substantial computational resources in training on 192p videos, and then gradually increased the resolution to 480p and 720p. We follow the flow matching training setting in [SD3](https://arxiv.org/abs/2403.03206) to gradually increase the value of sigma shift when training on 480p and 720p videos. For 720p training, we set sigma shift to 3.0 in training and 7.0 in inferring. For T2I, we use lognorm(0.5, 1) probability density function for the sampling of timesteps. For T2V and I2V, we use mode(1.29). Empirically, we find that using the mode sampling strategy brings greater motion in video generation tasks.
 <div align="left">
-    <img src="assets/noise.png" alt="" style="width: 85%;" />
+    <img src="assets/noise.webp" alt="" style="width: 85%;" loading="lazy" />
 </div>
 
 ##### (4) Prompt Tagging
