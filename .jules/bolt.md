@@ -1,0 +1,3 @@
+## 2026-07-19 - Optimization of Documentation Visual Assets via WebP and Lazy Loading
+**Learning:** Large visual assets (PNG format, totaling ~4.9MB) in documentation can heavily degrade page load performance and repository cloning speeds. Converting these assets to WebP format with a quality setting of 80 achieved an ~85% reduction in size (~720KB total). Additionally, appending `loading="lazy"` to images below the fold prevents network blocking on initial load without affecting Largest Contentful Paint (LCP) for visual elements above the fold.
+**Action:** When handling static visual assets in documentation or frontend projects, convert raw PNG images to optimized WebP format and add the `loading="lazy"` attribute to all images that render below the fold.
