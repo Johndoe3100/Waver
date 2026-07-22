@@ -1,0 +1,3 @@
+## 2024-07-22 - [Pillow Verification and Bulk Conversion in Python 3.12]
+**Learning:** In a sandbox environment where standard CLI tools like `cwebp` are missing, we can easily optimize binary PNG assets to WebP using Pillow. However, verifying Pillow's installation requires using `from PIL import Image` inside python rather than importing `PIL` at the top level, which can trigger a ModuleNotFoundError despite the package being successfully installed.
+**Action:** Always import specific PIL modules (such as `from PIL import Image`) when writing automated asset conversion or verification scripts to guarantee compatibility across virtual environments.
