@@ -1,0 +1,3 @@
+## 2025-08-04 - Documentation Asset WebP Conversion & Lazy Loading
+**Learning:** For documentation-only or image-heavy static pages, converting raw PNGs to WebP format (quality 80) drastically reduces page weight (by ~85% here) without visible quality loss. Additionally, applying `loading="lazy"` to images below the fold avoids network congestion at load time, while excluding the above-the-fold logo preserves Largest Contentful Paint (LCP).
+**Action:** Always identify original PNG assets in documentation, convert them to WebP using Pillow, clean up the original files to prevent repo bloat, and apply selective `loading="lazy"` targeting only below-the-fold elements.
