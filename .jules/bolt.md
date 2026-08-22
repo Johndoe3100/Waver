@@ -1,0 +1,3 @@
+## 2025-08-22 - WebP Conversion and Lazy Loading for README Assets
+**Learning:** Converting uncompressed PNG documentation assets to WebP (quality 80) drastically reduced asset payload from 5.03MB to 724KB (~85.6% savings) without visible quality degradation. Adding `loading="lazy"` to below-the-fold images prevents unnecessary initial payload fetches on page load.
+**Action:** When working on image-heavy documentation repositories, prioritize converting raw PNG assets to WebP and adding native lazy loading attributes to below-the-fold tags while keeping above-the-fold assets eager for optimal LCP.
