@@ -73,7 +73,7 @@ We compared **Waver1.0** with leading open-source and closed-source models on Wa
 We use [Wan-VAE](https://huggingface.co/Wan-AI/Wan2.1-T2V-14B/blob/main/Wan2.1_VAE.pth) to obtain the compressed video latent for its efficiency. We adopt [flan-t5-xxl](https://huggingface.co/google/flan-t5-xxl) and [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) to extract text features. Our DiT model is built upon rectified flow Transformers. Video and text modalities are fused using a Dual Stream + Single Stream approach, where the numbers of the two types of blocks are M and N. We achieve joint training of T2V and I2V within a single model simply by modifying the input channel, 16 for video token, 16 for image (first frame) token and 4 for task mask. We incorporate the image latent with a probability of 20% during joint training of T2V and I2V.
 
 <div align="left">
-    <img src="assets/model.png" alt="" style="width: 85%;" />  
+    <img src="assets/model.png" alt="" style="width: 85%;" />
 </div>  
 
 | Model  | M         | N      | Input Dimension |Output Dimension | Num of Head      | Head Dim |
